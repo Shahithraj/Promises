@@ -13,7 +13,7 @@
     return country.json()    
 })
 .then(data=>{
-    console.log(data.filter((pop)=> pop.population>20000000).map(a=> a.name))
+    console.log(data.filter((pop)=> pop.population>200000000).map(a=> a.name))
 })
 .catch(err => console.log("error"))
     </script>
