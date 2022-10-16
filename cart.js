@@ -11,7 +11,16 @@ promise
    return proceedToPayment(orderId);
   })
   .then(function (paymentInfo) {
-    console.log(paymentInfo);
+    return paymentInfo;
+  })
+  .then(function (paymentInfo) {
+    return showOrderSummary(paymentInfo);
+  })
+  .then(function (orderStatus) {
+    return updateWallet(orderStatus);
+  })
+  .then(function (res) {
+    console.log(res);
   })
   .catch((err) => {
     console.log(err.message);
@@ -43,6 +52,33 @@ function validateCart(cart) {
 
 function proceedToPayment(orderId) {
   return new Promise(function (resolve, reject) {
-    resolve('Payment Succcessfull');
+    if(orderId) {
+        resolve('Payment Succcessfull');
+    }else {
+        reject(new Error('Payment Failed'));
+    }
   });
+}
+
+
+function showOrderSummary(paymentInfo) {
+    return new Promise(function (resolve, reject) {
+        if(paymentInfo === "Payment Succcessfull") {
+        resolve("success");
+        }else {
+            reject('Something went wrong')
+        }
+})
+}
+
+function updateWallet(orderStatus) {
+return new Promise(function(resolve, reject) {
+    let walletBalance = 10000
+if(orderStatus === "success") {
+walletBalance = walletBalance - 1000
+resolve(`wallet balance is ${walletBalance}`)
+}else {
+    reject('Wallet Balance not updated')
+}
+})
 }
