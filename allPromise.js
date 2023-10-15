@@ -3,7 +3,7 @@ const promise1 = new Promise((resolve, reject) => {
 });
 
 const promise2 = new Promise((resolve, reject) => {
-  reject('success2');
+  reject('failure');
 });
 
 const promise3 = new Promise((resolve, reject) => {
