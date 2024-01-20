@@ -57,7 +57,7 @@ console.log(res2) // it will be printed after 3 seconds of 1st promise resolved
 console.log("Print after async promise")
 }
 
-// promise1 and promise2 will simultaneously run, after first one is resolved and consecutive promises will be resolved.
+// promise1 and promise2 will simultaneously run, after first one is resolved and consecutive promises will be resolved until that code will be suspended.
 
 console.log(executePromiseAsync()) // Promise {<pending>} but Fulfilled in promiseState
 
