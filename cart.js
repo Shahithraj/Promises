@@ -20,7 +20,7 @@ promise
     return updateWallet(orderStatus);
   })
   .then(function (res) {
-    console.log(res);
+    console.log(res); // To settle the promise 
   })
   .catch((err) => {
     console.log(err.message);
