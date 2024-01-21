@@ -13,7 +13,7 @@ const promise3 = new Promise((resolve, reject) => {
 const allPromises = [promise1, promise2, promise3];
 
 Promise.all(allPromises)
-  .then((values) => console.log(values))
+  .then((values) => console.log(values)) // values will be in array
   .catch((err) => console.log(err, 'error'));
 
 // 1. Promise all
