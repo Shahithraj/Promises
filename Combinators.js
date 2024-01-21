@@ -1,3 +1,7 @@
+// 1. Promise all
+
+//  * If one of the promise is rejected, it will print the reject statement in the catch block and other will not be executed.
+
 const promise1 = new Promise((resolve, reject) => {
   resolve('success');
 });
@@ -13,12 +17,17 @@ const promise3 = new Promise((resolve, reject) => {
 const allPromises = [promise1, promise2, promise3];
 
 Promise.all(allPromises)
-  .then((values) => console.log(values)) // values will be in array
-  .catch((err) => console.log(err, 'error'));
+  .then((values) => console.log(values)) // values will be in array // [resolvedValue1, resolvedValue2]
+  .catch((err) => console.log(err, 'error')); // rejectReason of any first rejected promise
 
-// 1. Promise all
+// In the case of async/await syntax:
 
-//  * If one of the promise is rejected, it will print the reject statement in the catch block and other will not be executed.
+try {
+  const values = await allPromises;
+  console.log(values); // [resolvedValue1, resolvedValue2]
+} catch (error) {
+  console.log(error); // rejectReason of any first rejected promise
+}
 
 Promise.allSettled(allPromises).then((result) => console.log(result));
 
