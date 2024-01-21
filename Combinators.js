@@ -42,6 +42,6 @@ Promise.allSettled(allPromises).then((result) => console.log(result));
 
 // 3. Promise race
 
-Promise.race(allPromises).then((value) => console.log(value));
+Promise.race(allPromises).then((value) => console.log(value)).cath((err) => console.log(err));
 
-// It will return first executing promise either it is rejected or resolved in then block
+// It will return first executing promise either it is rejected or resolved.
