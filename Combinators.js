@@ -45,3 +45,36 @@ Promise.allSettled(allPromises).then((result) => console.log(result));
 Promise.race(allPromises).then((value) => console.log(value)).cath((err) => console.log(err));
 
 // It will return first executing promise either it is rejected or resolved.
+
+https://www.educative.io/answers/what-is-promiserace-in-javascript
+
+4. Promise any :
+
+Promise.any will return the first fulfilled promise, whereas Promise.race will return the first settled promise.
+If all are rejected, in which case it's rejected with an AggregateError.
+  
+let promise1 = new Promise( (resolve, reject) => {
+  setTimeout(resolve, 100, 'First Promise resolve after 100ms');
+});
+
+let promise2 = new Promise((resolve, reject) => {
+  setTimeout(reject, 50, 'second Promise will reject after 50ms');
+});
+
+Promise.race([promise1, promise2])
+        .then( value => {
+          console.log("On Calling Promise.race", value);
+        })
+        .catch(v=>{
+          console.log("On Calling Promise.race", v);  / promise 2 will reject first so it will be printed
+        });
+
+Promise.any([promise1, promise2])
+        .then( value => {
+          console.log("On Calling Promise.any", value); / promise 1 will fulfilled first so it will be printed
+        })
+        .catch( v => {
+          console.log("On Calling Promise.any", v);
+        })
+
+
